@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Government Schemes - GovSchemes Portal</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Educational Disclaimer Strip -->
+  <div class="top-gov-strip">
+    <div><strong>🏛️ Civic Information &amp; Eligibility Portal</strong> (DBMS Mini-Project)</div>
+    <div class="disclaimer-badge">Independent Educational Demonstration</div>
+  </div>
+
+  <!-- Primary Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <div class="brand-emblem">GS</div>
+        <div class="brand-text">
+          <h1>GovSchemes Portal</h1>
+          <p>Scheme Discovery &amp; Eligibility</p>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">☰</button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/schemes.html" class="nav-link active">Browse Schemes</a></li>
+        <li><a href="/eligibility.html" class="nav-link">Eligibility Wizard</a></li>
+        <li><a href="/admin-login.html" class="nav-link">Admin Portal</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically by main.js based on session state -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Catalog Content -->
+  <main class="container">
+    <div class="section-header" style="margin-bottom: 1.5rem;">
+      <div>
+        <h1 class="section-title">Government Schemes Catalog</h1>
+        <p class="section-subtitle">Search, filter, and evaluate eligibility across national and state programs</p>
+      </div>
+      <div id="total-schemes-count" style="font-weight: 600; color: var(--primary);">
+        Loading schemes...
+      </div>
+    </div>
+
+    <div class="catalog-layout">
+      <!-- Sidebar Filters Form -->
+      <aside class="filter-sidebar">
+        <div class="filter-sidebar-header">
+          <h3 style="font-size: 1.05rem; color: var(--primary);">Filter Criteria</h3>
+          <button type="button" id="btn-reset-filters" class="btn btn-secondary btn-sm" style="font-size: 0.75rem;">Reset All</button>
+        </div>
+
+        <form id="catalog-filters-form">
+          <!-- Keyword Search -->
+          <div class="filter-group">
+            <label for="filter-search">Keyword Search</label>
+            <input type="text" id="filter-search" class="form-control" placeholder="Search name or benefit...">
+          </div>
+
+          <!-- Category Filter -->
+          <div class="filter-group">
+            <label for="filter-category">Domain / Category</label>
+            <select id="filter-category" class="form-control">
+              <option value="">All Categories</option>
+              <!-- Injected dynamically from /api/categories -->
+            </select>
+          </div>
+
+          <!-- Application Status Filter -->
+          <div class="filter-group">
+            <label for="filter-status">Application Status</label>
+            <select id="filter-status" class="form-control">
+              <option value="">All Statuses</option>
+              <option value="open">Currently Open</option>
+              <option value="upcoming">Upcoming Cycles</option>
+              <option value="closed">Closed Cycles</option>
+            </select>
+          </div>
+
+          <!-- State Filter -->
+          <div class="filter-group">
+            <label for="filter-state">State / Territory</label>
+            <select id="filter-state" class="form-control">
+              <option value="">All Regions (National &amp; State)</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Delhi">Delhi</option>
+            </select>
+          </div>
+
+          <!-- Occupation Filter -->
+          <div class="filter-group">
+            <label for="filter-occupation">Applicant Occupation</label>
+            <select id="filter-occupation" class="form-control">
+              <option value="">Any Occupation</option>
+              <option value="Farmer">Farmer</option>
+              <option value="Student">Student</option>
+              <option value="Self-Employed">Self-Employed / Entrepreneur</option>
+              <option value="Unemployed Youth">Unemployed Youth</option>
+            </select>
+          </div>
+
+          <!-- Age Filter -->
+          <div class="filter-group">
+            <label for="filter-min-age">Your Current Age (Years)</label>
+            <input type="number" id="filter-min-age" class="form-control" placeholder="e.g. 24" min="0" max="120">
+          </div>
+
+          <!-- Annual Income Filter -->
+          <div class="filter-group">
+            <label for="filter-max-income">Annual Family Income (₹)</label>
+            <input type="number" id="filter-max-income" class="form-control" placeholder="e.g. 200000" min="0" step="5000">
+          </div>
+
+          <!-- Sort Order -->
+          <div class="filter-group">
+            <label for="filter-sort">Sort By</label>
+            <select id="filter-sort" class="form-control">
+              <option value="created_at">Recently Added</option>
+              <option value="name">Scheme Name (A-Z)</option>
+              <option value="end_date">Closing Date (Urgent First)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Apply Filters</button>
+        </form>
+      </aside>
+
+      <!-- Scheme Cards Grid & Pagination -->
+      <section style="flex: 1;">
+        <div class="schemes-grid" id="schemes-list-container">
+          <!-- Injected dynamically by schemes.js -->
+        </div>
+
+        <div class="pagination" id="pagination-container">
+          <!-- Injected dynamically -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div>© 2026 Government Scheme Management and Recommendation System. DBMS Mini-Project.</div>
+      <div>Official application links redirect to official departments.</div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/schemes.js"></script>
+</body>
+</html>

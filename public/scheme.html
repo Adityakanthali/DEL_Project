@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheme Details - GovSchemes Portal</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Educational Disclaimer Strip -->
+  <div class="top-gov-strip">
+    <div><strong>🏛️ Civic Information &amp; Eligibility Portal</strong> (DBMS Mini-Project)</div>
+    <div class="disclaimer-badge">Independent Educational Demonstration</div>
+  </div>
+
+  <!-- Primary Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <div class="brand-emblem">GS</div>
+        <div class="brand-text">
+          <h1>GovSchemes Portal</h1>
+          <p>Scheme Discovery &amp; Eligibility</p>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">☰</button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/schemes.html" class="nav-link active">Browse Schemes</a></li>
+        <li><a href="/eligibility.html" class="nav-link">Eligibility Wizard</a></li>
+        <li><a href="/admin-login.html" class="nav-link">Admin Portal</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically by main.js based on session state -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Details Hero Header -->
+  <section class="details-hero">
+    <div class="container" style="padding-top: 0; padding-bottom: 0;">
+      <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem;">
+        <span class="scheme-category-badge" id="detail-category">Category</span>
+        <span class="badge badge-scope" id="detail-scope">Scope: National</span>
+        <span id="detail-status"></span>
+      </div>
+
+      <h1 id="detail-title" style="font-size: 2rem; color: var(--primary); margin-bottom: 0.75rem; line-height: 1.25;">
+        Loading Scheme Information...
+      </h1>
+
+      <p id="detail-short-desc" style="font-size: 1.05rem; color: var(--text-muted); max-width: 900px; margin-bottom: 1.5rem;">
+        Please wait while scheme metadata is retrieved from the MySQL database.
+      </p>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a id="btn-official-apply" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-accent">
+          🚀 Apply on Official Department Portal ↗
+        </a>
+        <button id="btn-save-scheme" class="btn btn-outline">☆ Bookmark Scheme</button>
+        <a href="#eligibility-section" class="btn btn-secondary">Check Preliminary Eligibility ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Details Content Grid -->
+  <main class="container">
+    <div class="details-grid">
+      <!-- Left Column: Details, Benefits, Criteria, Documents -->
+      <div>
+        <!-- Scheme Overview & Objectives -->
+        <article class="details-card">
+          <h3><span>📋</span> Detailed Overview</h3>
+          <p id="detail-desc" style="white-space: pre-line; line-height: 1.7; color: var(--text-main);">
+            Loading description...
+          </p>
+        </article>
+
+        <!-- Financial & Welfare Benefits -->
+        <article class="details-card" style="border-left: 4px solid var(--accent-green);">
+          <h3 style="color: var(--accent-green);"><span>💰</span> Financial &amp; Welfare Benefits</h3>
+          <div id="detail-benefits" style="white-space: pre-line; line-height: 1.7; font-weight: 500;">
+            Loading benefits...
+          </div>
+        </article>
+
+        <!-- Eligibility Criteria Table -->
+        <article class="details-card">
+          <h3><span>⚖️</span> Eligibility Criteria &amp; Conditions</h3>
+          <p class="text-muted" style="margin-bottom: 1rem; font-size: 0.88rem;">
+            These criteria conditions are evaluated by the eligibility recommendation engine:
+          </p>
+          <div class="data-table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Criterion</th>
+                  <th>Condition</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody id="detail-criteria-list">
+                <tr><td colspan="4" class="text-muted">Loading criteria...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <!-- Required Supporting Documents -->
+        <article class="details-card">
+          <h3><span>📑</span> Required Supporting Documents</h3>
+          <p class="text-muted" style="margin-bottom: 1rem; font-size: 0.88rem;">
+            Ensure you have legible, authentic copies of these documents ready:
+          </p>
+          <ul id="detail-documents-list" style="list-style: none;">
+            <li class="text-muted">Loading required documents...</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- Right Column: Key Facts, Official Source, Interactive Checker Form -->
+      <div>
+        <!-- Key Metadata Card -->
+        <div class="details-card">
+          <h3><span>📌</span> Key Timeline &amp; Links</h3>
+          <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.9rem;">
+            <div>
+              <span class="text-muted" style="display: block; font-size: 0.78rem; text-transform: uppercase;">Application Opening Date</span>
+              <strong id="detail-start-date">--</strong>
+            </div>
+            <div>
+              <span class="text-muted" style="display: block; font-size: 0.78rem; text-transform: uppercase;">Application Closing Date</span>
+              <strong id="detail-end-date">--</strong>
+            </div>
+            <div>
+              <span class="text-muted" style="display: block; font-size: 0.78rem; text-transform: uppercase;">Source Last Verified</span>
+              <span id="detail-verified">--</span>
+            </div>
+            <div style="padding-top: 0.75rem; border-top: 1px solid var(--border-color);">
+              <span class="text-muted" style="display: block; font-size: 0.78rem; text-transform: uppercase;">Official Source / Notification</span>
+              <a id="detail-source-link" href="#" target="_blank" rel="noopener noreferrer" style="font-size: 0.85rem; word-break: break-all;">
+                Official Gazette Notification ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Integrated Interactive Eligibility Checker -->
+        <div class="details-card" id="eligibility-section" style="border: 2px solid var(--border-focus); background-color: #fafbfc;">
+          <h3 style="color: var(--primary);"><span>🎯</span> Test Your Eligibility</h3>
+          <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 1.25rem;">
+            Enter your details below to check whether you qualify based on configured conditions.
+          </p>
+
+          <form id="embedded-eligibility-form">
+            <div class="form-group">
+              <label for="check-age" class="form-label">Current Age</label>
+              <input type="number" id="check-age" class="form-control" placeholder="Years (e.g. 24)" min="1" max="120">
+            </div>
+
+            <div class="form-group">
+              <label for="check-income" class="form-label">Annual Family Income (₹)</label>
+              <input type="number" id="check-income" class="form-control" placeholder="e.g. 180000" min="0">
+            </div>
+
+            <div class="form-group">
+              <label for="check-occupation" class="form-label">Occupation</label>
+              <select id="check-occupation" class="form-control">
+                <option value="">Select Occupation...</option>
+                <option value="Farmer">Farmer</option>
+                <option value="Student">Student</option>
+                <option value="Self-Employed">Self-Employed / Entrepreneur</option>
+                <option value="Unemployed Youth">Unemployed Youth</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="check-state" class="form-label">State of Residence</label>
+              <select id="check-state" class="form-control">
+                <option value="">Select State...</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Delhi">Delhi</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="check-education" class="form-label">Education Level</label>
+              <select id="check-education" class="form-control">
+                <option value="">Select Education...</option>
+                <option value="8th Pass">8th Pass</option>
+                <option value="10th Pass">10th Pass (Matriculation)</option>
+                <option value="12th Pass">12th Pass</option>
+                <option value="Diploma">Diploma / ITI</option>
+                <option value="Undergraduate">Undergraduate / College</option>
+                <option value="Graduate">Graduate / Post-Graduate</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="check-beneficiary" class="form-label">Beneficiary Category</label>
+              <select id="check-beneficiary" class="form-control">
+                <option value="">Select Category...</option>
+                <option value="General">General</option>
+                <option value="OBC">OBC</option>
+                <option value="SC">Scheduled Caste (SC)</option>
+                <option value="ST">Scheduled Tribe (ST)</option>
+                <option value="Women Entrepreneur">Women Entrepreneur</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Check My Eligibility
+            </button>
+          </form>
+
+          <!-- Dynamic Evaluation Result Box -->
+          <div id="embedded-eligibility-result" style="display: none;"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div>© 2026 Government Scheme Management and Recommendation System. DBMS Mini-Project.</div>
+      <div>Official portal buttons open legitimate external links.</div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/schemes.js"></script>
+</body>
+</html>

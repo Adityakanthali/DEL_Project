@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eligibility Recommendation Wizard - GovSchemes Portal</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="top-gov-strip">
+    <div><strong>🏛️ Civic Information &amp; Eligibility Portal</strong> (DBMS Mini-Project)</div>
+    <div class="disclaimer-badge">Automated Recommendation Engine</div>
+  </div>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <div class="brand-emblem">GS</div>
+        <div class="brand-text">
+          <h1>GovSchemes Portal</h1>
+          <p>Eligibility Recommendation</p>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">☰</button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/schemes.html" class="nav-link">Browse Schemes</a></li>
+        <li><a href="/eligibility.html" class="nav-link active">Eligibility Wizard</a></li>
+        <li><a href="/admin-login.html" class="nav-link">Admin Portal</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically by main.js -->
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="section-header">
+      <div>
+        <h1 class="section-title">Preliminary Eligibility Recommendation Engine</h1>
+        <p class="section-subtitle">
+          Input your demographic profile to evaluate qualification criteria across all active open schemes in the MySQL database.
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 1: Input Profile Form -->
+    <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);">
+      <h3 style="font-size: 1.15rem; color: var(--primary); margin-bottom: 0.5rem;">Step 1: Specify Demographic Attributes</h3>
+      <p class="text-muted" style="font-size: 0.88rem; margin-bottom: 1.5rem;">
+        These values will be dynamically compared against the eligibility criteria stored in the database.
+      </p>
+
+      <form id="eligibility-wizard-form">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+          <div class="form-group">
+            <label for="wiz-age" class="form-label">Current Age (Years)</label>
+            <input type="number" id="wiz-age" class="form-control" placeholder="e.g. 26" min="1" max="120" required>
+          </div>
+
+          <div class="form-group">
+            <label for="wiz-state" class="form-label">State of Residence</label>
+            <select id="wiz-state" class="form-control" required>
+              <option value="">Select State...</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Delhi">Delhi</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="wiz-occupation" class="form-label">Occupation</label>
+            <select id="wiz-occupation" class="form-control" required>
+              <option value="">Select Occupation...</option>
+              <option value="Farmer">Farmer</option>
+              <option value="Student">Student</option>
+              <option value="Self-Employed">Self-Employed / Entrepreneur</option>
+              <option value="Unemployed Youth">Unemployed Youth</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="wiz-income" class="form-label">Annual Family Income (₹)</label>
+            <input type="number" id="wiz-income" class="form-control" placeholder="e.g. 180000" min="0" step="1000" required>
+          </div>
+
+          <div class="form-group">
+            <label for="wiz-education" class="form-label">Education Level</label>
+            <select id="wiz-education" class="form-control">
+              <option value="">Select Education...</option>
+              <option value="8th Pass">8th Pass</option>
+              <option value="10th Pass">10th Pass</option>
+              <option value="12th Pass">12th Pass</option>
+              <option value="Diploma">Diploma / ITI</option>
+              <option value="Undergraduate">Undergraduate</option>
+              <option value="Graduate">Graduate</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="wiz-beneficiary" class="form-label">Social / Beneficiary Group</label>
+            <select id="wiz-beneficiary" class="form-control">
+              <option value="">Select Category...</option>
+              <option value="General">General</option>
+              <option value="OBC">OBC</option>
+              <option value="SC">Scheduled Caste (SC)</option>
+              <option value="ST">Scheduled Tribe (ST)</option>
+              <option value="Women Entrepreneur">Women Entrepreneur</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <button type="submit" class="btn btn-accent btn-lg" style="min-width: 260px;">
+            Run Recommendation Engine ⚡
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Step 2: Recommendations Results Area -->
+    <section id="wizard-results-area" style="display: none;">
+      <!-- Results injected dynamically by eligibility.js -->
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div>© 2026 Government Scheme Management and Recommendation System. DBMS Mini-Project.</div>
+      <div>Eligibility Service (eligibilityService.js)</div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/eligibility.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Profile - GovSchemes Portal</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="top-gov-strip">
+    <div><strong>🏛️ Civic Information &amp; Eligibility Portal</strong> (DBMS Mini-Project)</div>
+    <div class="disclaimer-badge">Citizen Account Management</div>
+  </div>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <div class="brand-emblem">GS</div>
+        <div class="brand-text">
+          <h1>GovSchemes Portal</h1>
+          <p>My Profile</p>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">☰</button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/schemes.html" class="nav-link">Browse Schemes</a></li>
+        <li><a href="/user-dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="/profile.html" class="nav-link active">Profile</a></li>
+        <li><a href="/saved-schemes.html" class="nav-link">Saved Schemes</a></li>
+        <li><a href="/eligibility.html" class="nav-link">Eligibility Wizard</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically by main.js -->
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div class="section-header">
+        <div>
+          <h1 class="section-title">Demographic Profile</h1>
+          <p class="section-subtitle">Keep your profile updated for accurate automated scheme eligibility evaluations.</p>
+        </div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; box-shadow: var(--shadow-sm);">
+        <form id="form-profile">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+            <!-- Full Name -->
+            <div class="form-group">
+              <label for="full_name" class="form-label">Full Name</label>
+              <input type="text" id="full_name" class="form-control" required>
+            </div>
+
+            <!-- Email (Read-only) -->
+            <div class="form-group">
+              <label for="email" class="form-label">Registered Email</label>
+              <input type="email" id="email" class="form-control" disabled style="background-color: var(--bg-subtle);">
+              <div class="form-hint">Email is linked to account authentication and cannot be changed.</div>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="form-group">
+              <label for="date_of_birth" class="form-label">Date of Birth</label>
+              <input type="date" id="date_of_birth" class="form-control">
+              <div id="calculated-age-display" class="form-hint" style="color: var(--primary); font-weight: 600;">
+                Calculated Age: --
+              </div>
+            </div>
+
+            <!-- State -->
+            <div class="form-group">
+              <label for="state" class="form-label">State / Union Territory</label>
+              <select id="state" class="form-control">
+                <option value="">Select State...</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Delhi">Delhi</option>
+              </select>
+            </div>
+
+            <!-- District -->
+            <div class="form-group">
+              <label for="district" class="form-label">District / City</label>
+              <input type="text" id="district" class="form-control" placeholder="e.g. Pune, Nagpur">
+            </div>
+
+            <!-- Occupation -->
+            <div class="form-group">
+              <label for="occupation" class="form-label">Primary Occupation</label>
+              <select id="occupation" class="form-control">
+                <option value="">Select Occupation...</option>
+                <option value="Farmer">Farmer</option>
+                <option value="Student">Student</option>
+                <option value="Self-Employed">Self-Employed / Entrepreneur</option>
+                <option value="Unemployed Youth">Unemployed Youth</option>
+              </select>
+            </div>
+
+            <!-- Annual Income -->
+            <div class="form-group">
+              <label for="annual_income" class="form-label">Total Annual Family Income (₹)</label>
+              <input type="number" id="annual_income" class="form-control" placeholder="e.g. 180000" min="0" step="1000">
+              <div class="form-hint">Used to verify income ceilings under poverty line/EWS criteria.</div>
+            </div>
+
+            <!-- Education Level -->
+            <div class="form-group">
+              <label for="education_level" class="form-label">Highest Education Attained</label>
+              <select id="education_level" class="form-control">
+                <option value="">Select Education...</option>
+                <option value="8th Pass">8th Pass</option>
+                <option value="10th Pass">10th Pass (Matriculation)</option>
+                <option value="12th Pass">12th Pass</option>
+                <option value="Diploma">Diploma / ITI</option>
+                <option value="Undergraduate">Undergraduate / College</option>
+                <option value="Graduate">Graduate / Post-Graduate</option>
+              </select>
+            </div>
+
+            <!-- Beneficiary Group -->
+            <div class="form-group" style="grid-column: 1/-1;">
+              <label for="beneficiary_group" class="form-label">Social / Beneficiary Category</label>
+              <select id="beneficiary_group" class="form-control">
+                <option value="">Select Category...</option>
+                <option value="General">General</option>
+                <option value="OBC">Other Backward Class (OBC)</option>
+                <option value="SC">Scheduled Caste (SC)</option>
+                <option value="ST">Scheduled Tribe (ST)</option>
+                <option value="Women Entrepreneur">Women Entrepreneur</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem; text-align: right;">
+            <button type="submit" class="btn btn-primary btn-lg">Save Profile Details</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div>© 2026 Government Scheme Management and Recommendation System. DBMS Mini-Project.</div>
+      <div>Profile Management</div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/auth.js"></script>
+</body>
+</html>

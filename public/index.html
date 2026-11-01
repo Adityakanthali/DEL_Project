@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Scheme Management and Eligibility Recommendation System</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Educational Disclaimer Strip -->
+  <div class="top-gov-strip">
+    <div><strong>🏛️ Civic Information & Eligibility Portal</strong> (DBMS Mini-Project)</div>
+    <div class="disclaimer-badge">Independent Educational Demonstration</div>
+  </div>
+
+  <!-- Primary Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <div class="brand-emblem">GS</div>
+        <div class="brand-text">
+          <h1>GovSchemes Portal</h1>
+          <p>Scheme Discovery &amp; Eligibility</p>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">☰</button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="/index.html" class="nav-link active">Home</a></li>
+        <li><a href="/schemes.html" class="nav-link">Browse Schemes</a></li>
+        <li><a href="/eligibility.html" class="nav-link">Eligibility Wizard</a></li>
+        <li><a href="/admin-login.html" class="nav-link">Admin Portal</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically by main.js based on session state -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <span class="hero-badge">Centralized Citizen Services Discovery</span>
+      <h2 class="hero-title">Discover Government Schemes You Are Eligible For</h2>
+      <p class="hero-subtitle">
+        Evaluate your eligibility criteria against scholarships, farming subsidies, healthcare benefits, and employment schemes with transparent rule-by-rule explanations.
+      </p>
+
+      <!-- Live Search Box -->
+      <form id="home-search-form" class="hero-search-box">
+        <input
+          type="text"
+          id="home-search-input"
+          class="hero-search-input"
+          placeholder="Search by scheme name or keyword (e.g. Kisan, Scholarship, Housing)..."
+          required
+        >
+        <button type="submit" class="btn btn-accent btn-lg">Search Schemes</button>
+      </form>
+
+      <!-- Quick Search Suggestions -->
+      <div class="quick-tags">
+        <span>Popular Filters:</span>
+        <a href="/schemes.html?search=Kisan" class="quick-tag-pill">Farmers</a>
+        <a href="/schemes.html?search=Scholarship" class="quick-tag-pill">Scholarships</a>
+        <a href="/schemes.html?search=Awas" class="quick-tag-pill">Housing</a>
+        <a href="/schemes.html?search=Health" class="quick-tag-pill">Healthcare</a>
+        <a href="/schemes.html?state=Maharashtra" class="quick-tag-pill">Maharashtra</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live MySQL Portal Statistics Strip -->
+  <section class="stats-strip">
+    <div class="container" style="padding-top: 0; padding-bottom: 0;">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="stat-total-schemes">--</div>
+          <div class="stat-label">Published Schemes</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="stat-open-schemes" style="color: var(--accent-green);">--</div>
+          <div class="stat-label">Currently Open</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="stat-categories">--</div>
+          <div class="stat-label">Scheme Domains</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="stat-users">--</div>
+          <div class="stat-label">Registered Citizens</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scheme Categories Overview -->
+  <section class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Explore by Domain</h2>
+        <p class="section-subtitle">Find social welfare programs categorized by sector and objective</p>
+      </div>
+      <a href="/schemes.html" class="btn btn-secondary btn-sm">View All Categories →</a>
+    </div>
+
+    <div class="categories-grid" id="categories-container">
+      <p class="text-muted">Loading categories...</p>
+    </div>
+  </section>
+
+  <!-- Featured Schemes Section -->
+  <section class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Featured Schemes</h2>
+        <p class="section-subtitle">Key welfare and development programs open across the nation</p>
+      </div>
+      <a href="/schemes.html" class="btn btn-secondary btn-sm">Explore All Schemes →</a>
+    </div>
+
+    <div class="schemes-grid" id="featured-schemes-container">
+      <p class="text-muted">Loading featured schemes...</p>
+    </div>
+  </section>
+
+  <!-- Closing Soon Alert Section -->
+  <section class="container" style="background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--border-color); margin-bottom: 3rem;">
+    <div class="section-header" style="margin-bottom: 1.25rem;">
+      <div>
+        <h2 class="section-title" style="color: var(--accent-red);">
+          <span>⏱ Approaching Deadlines</span>
+        </h2>
+        <p class="section-subtitle">Open schemes with closing dates approaching soon</p>
+      </div>
+    </div>
+
+    <div class="schemes-grid" id="closing-soon-container">
+      <p class="text-muted">Checking application deadlines...</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>GovSchemes Portal</h4>
+        <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 1rem;">
+          A full-stack, database-driven web application built for a college DBMS mini-project demonstrating 3NF relational normalization, views, triggers, and stored routines in MySQL.
+        </p>
+        <p style="font-size: 0.8rem; color: #94a3b8;">
+          Technology Stack: Node.js, Express.js, MySQL 8.0, Vanilla JS, CSS3.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Citizen Links</h4>
+        <ul>
+          <li><a href="/schemes.html">Browse Schemes</a></li>
+          <li><a href="/eligibility.html">Eligibility Recommendation Wizard</a></li>
+          <li><a href="/login.html">Citizen Sign In</a></li>
+          <li><a href="/register.html">Citizen Registration</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Administration</h4>
+        <ul>
+          <li><a href="/admin-login.html">Administrator Login</a></li>
+          <li><a href="/admin-dashboard.html">Admin Dashboard</a></li>
+          <li><a href="/admin-schemes.html">Scheme Management</a></li>
+          <li><a href="/admin-audit-logs.html">Audit History</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Academic Project</h4>
+        <ul>
+          <li><a>DBMS Mini-Project</a></li>
+          <li><a>Relational Schema (3NF)</a></li>
+          <li><a>Stored Programs &amp; Triggers</a></li>
+          <li><a>Parameterized SQL</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Government Scheme Management and Recommendation System. Academic Project Demonstration.</div>
+      <div>Notice: Not an official government website. Official links redirect to external department portals.</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/schemes.js"></script>
+</body>
+</html>

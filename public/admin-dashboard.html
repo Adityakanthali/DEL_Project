@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Scheme Management System</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/admin.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+  <!-- Chart.js CDN for Admin Visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <div class="admin-layout">
+    <!-- Admin Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <div class="brand-emblem" style="width: 36px; height: 36px; font-size: 1rem;">GS</div>
+        <div class="admin-sidebar-brand">
+          <h2>Admin Console</h2>
+          <span>DBMS Mini-Project</span>
+        </div>
+      </div>
+
+      <ul class="admin-nav">
+        <li class="admin-nav-item">
+          <a href="/admin-dashboard.html" class="admin-nav-link active">
+            <span>📊</span> Dashboard
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-schemes.html" class="admin-nav-link">
+            <span>📜</span> All Schemes
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-scheme-form.html" class="admin-nav-link">
+            <span>➕</span> Add New Scheme
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-categories.html" class="admin-nav-link">
+            <span>🏛️</span> Manage Categories
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-audit-logs.html" class="admin-nav-link">
+            <span>🛡️</span> Scheme Audit Logs
+          </a>
+        </li>
+        <li class="admin-nav-item" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+          <a href="/index.html" class="admin-nav-link" target="_blank">
+            <span>🌐</span> Public Portal ↗
+          </a>
+        </li>
+      </ul>
+
+      <div class="admin-sidebar-footer">
+        <span style="font-size: 0.8rem; color: #94a3b8;">MySQL 8.0 InnoDB</span>
+        <a href="/api/auth/logout" class="btn btn-secondary btn-sm" id="btn-admin-logout" style="padding: 0.2rem 0.6rem;">Exit</a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="admin-topbar-title">
+          <h1>System Overview &amp; Analytics</h1>
+        </div>
+        <div class="admin-user-info">
+          <span>Administrator: <strong id="admin-display-name">Admin</strong></span>
+          <a href="/admin-scheme-form.html" class="btn btn-primary btn-sm">+ Add Scheme</a>
+        </div>
+      </header>
+
+      <div class="admin-body">
+        <!-- KPI Metrics Grid -->
+        <div class="admin-kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">Total Schemes</div>
+            <div class="kpi-num" id="kpi-total-schemes">--</div>
+          </div>
+          <div class="kpi-card open">
+            <div class="kpi-label">Open Applications</div>
+            <div class="kpi-num" id="kpi-open-schemes" style="color: var(--accent-green);">--</div>
+          </div>
+          <div class="kpi-card upcoming">
+            <div class="kpi-label">Upcoming Cycles</div>
+            <div class="kpi-num" id="kpi-upcoming-schemes" style="color: #2563eb;">--</div>
+          </div>
+          <div class="kpi-card closed">
+            <div class="kpi-label">Closed Cycles</div>
+            <div class="kpi-num" id="kpi-closed-schemes" style="color: #64748b;">--</div>
+          </div>
+          <div class="kpi-card draft">
+            <div class="kpi-label">Published vs Drafts</div>
+            <div class="kpi-num" id="kpi-published-schemes" style="color: var(--accent-saffron);">--</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Registered Citizens</div>
+            <div class="kpi-num" id="kpi-total-users">--</div>
+          </div>
+        </div>
+
+        <!-- Database Visualizations (Charts.js) -->
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3>Schemes Distribution Across Categories (MySQL v_scheme_category_summary)</h3>
+            <div class="chart-container">
+              <canvas id="chart-categories"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <h3>Application Lifecycle Breakdown</h3>
+            <div class="chart-container">
+              <canvas id="chart-status"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Audit History Preview -->
+        <div style="background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h3 style="font-size: 1.15rem; color: var(--primary);">Recent Administrative Audit Activity</h3>
+            <a href="/admin-audit-logs.html" class="btn btn-secondary btn-sm">View Full Audit Trail →</a>
+          </div>
+
+          <div class="data-table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Admin</th>
+                  <th>Action</th>
+                  <th>Description</th>
+                  <th>Timestamp</th>
+                </tr>
+              </thead>
+              <tbody id="dashboard-audit-preview">
+                <tr><td colspan="4" class="text-muted" style="text-align: center;">Loading recent audit logs...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/admin.js"></script>
+</body>
+</html>

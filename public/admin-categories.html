@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category Management - Admin Console</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/admin.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <div class="brand-emblem" style="width: 36px; height: 36px; font-size: 1rem;">GS</div>
+        <div class="admin-sidebar-brand">
+          <h2>Admin Console</h2>
+          <span>DBMS Mini-Project</span>
+        </div>
+      </div>
+
+      <ul class="admin-nav">
+        <li class="admin-nav-item">
+          <a href="/admin-dashboard.html" class="admin-nav-link">
+            <span>📊</span> Dashboard
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-schemes.html" class="admin-nav-link">
+            <span>📜</span> All Schemes
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-scheme-form.html" class="admin-nav-link">
+            <span>➕</span> Add New Scheme
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-categories.html" class="admin-nav-link active">
+            <span>🏛️</span> Manage Categories
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-audit-logs.html" class="admin-nav-link">
+            <span>🛡️</span> Scheme Audit Logs
+          </a>
+        </li>
+        <li class="admin-nav-item" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+          <a href="/index.html" class="admin-nav-link" target="_blank">
+            <span>🌐</span> Public Portal ↗
+          </a>
+        </li>
+      </ul>
+
+      <div class="admin-sidebar-footer">
+        <span style="font-size: 0.8rem; color: #94a3b8;">MySQL 8.0 InnoDB</span>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="admin-topbar-title">
+          <h1>Scheme Category Domains</h1>
+        </div>
+      </header>
+
+      <div class="admin-body">
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: flex-start;">
+          <!-- Categories Table -->
+          <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem;">
+            <h3 style="font-size: 1.15rem; color: var(--primary); margin-bottom: 1rem;">Configured Domains</h3>
+            <div class="data-table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th style="width: 60px;">ID</th>
+                    <th>Category Name</th>
+                    <th>Description</th>
+                    <th>Schemes</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-categories-tbody">
+                  <tr><td colspan="5" class="text-muted" style="text-align: center;">Loading categories...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Add Category Form -->
+          <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem;">
+            <h3 style="font-size: 1.15rem; color: var(--primary); margin-bottom: 1rem;">Add New Category</h3>
+            <form id="form-add-category">
+              <div class="form-group">
+                <label for="cat-name" class="form-label">Category Name *</label>
+                <input type="text" id="cat-name" class="form-control" placeholder="e.g. Rural Development" required>
+              </div>
+
+              <div class="form-group">
+                <label for="cat-desc" class="form-label">Description</label>
+                <textarea id="cat-desc" class="form-control" rows="3" placeholder="Brief domain scope and targeted welfare sectors"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Create Category
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/admin.js"></script>
+</body>
+</html>

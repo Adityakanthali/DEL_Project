@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Dashboard - GovSchemes Portal</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="top-gov-strip">
+    <div><strong>🏛️ Civic Information &amp; Eligibility Portal</strong> (DBMS Mini-Project)</div>
+    <div class="disclaimer-badge">Citizen Account Portal</div>
+  </div>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <div class="brand-emblem">GS</div>
+        <div class="brand-text">
+          <h1>GovSchemes Portal</h1>
+          <p>Citizen Dashboard</p>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">☰</button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/schemes.html" class="nav-link">Browse Schemes</a></li>
+        <li><a href="/user-dashboard.html" class="nav-link active">Dashboard</a></li>
+        <li><a href="/profile.html" class="nav-link">Profile</a></li>
+        <li><a href="/saved-schemes.html" class="nav-link">Saved Schemes</a></li>
+        <li><a href="/eligibility.html" class="nav-link">Eligibility Wizard</a></li>
+      </ul>
+
+      <div class="nav-actions" id="nav-actions">
+        <!-- Injected dynamically by main.js based on session state -->
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Welcome Hero -->
+    <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: #fff; padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem; box-shadow: var(--shadow-md);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span style="font-size: 0.85rem; color: #fde68a; font-weight: 600; text-transform: uppercase;">Citizen Portal</span>
+          <h1 style="font-size: 1.85rem; margin-top: 0.25rem;">Welcome back, <span id="dash-user-name">Citizen</span>!</h1>
+          <p style="color: #e2e8f0; font-size: 0.95rem; margin-top: 0.35rem;" id="dash-user-email">Loading profile details...</p>
+        </div>
+        <div>
+          <a href="/eligibility.html" class="btn btn-accent btn-lg">Check Eligibility Across All Schemes →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3-Column Dashboard Layout -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+      <!-- Profile Card -->
+      <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h3 style="font-size: 1.15rem; color: var(--primary);">Demographic Profile</h3>
+          <a href="/profile.html" class="btn btn-secondary btn-sm">Edit Profile</a>
+        </div>
+        <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 1.25rem;">
+          Your profile attributes are used to automatically check your eligibility for schemes.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.9rem;">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+            <span class="text-muted">Calculated Age:</span>
+            <strong id="dash-user-age">--</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+            <span class="text-muted">State:</span>
+            <strong id="dash-user-state">--</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span class="text-muted">Occupation:</span>
+            <strong id="dash-user-occ">--</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bookmarked Schemes Summary -->
+      <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h3 style="font-size: 1.15rem; color: var(--primary);">Saved Schemes</h3>
+          <span class="badge badge-scope" id="dash-saved-count">0</span>
+        </div>
+        <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 1rem;">
+          Quickly access bookmarked schemes you plan to apply for:
+        </p>
+
+        <div id="dash-saved-preview">
+          <p class="text-muted">Loading saved schemes...</p>
+        </div>
+
+        <div style="margin-top: 1rem; text-align: right;">
+          <a href="/saved-schemes.html" style="font-size: 0.88rem; font-weight: 600;">View All Bookmarks →</a>
+        </div>
+      </div>
+
+      <!-- Quick Action Shortcuts -->
+      <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.5rem;">
+        <h3 style="font-size: 1.15rem; color: var(--primary); margin-bottom: 1rem;">Quick Shortcuts</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <a href="/schemes.html" class="btn btn-secondary" style="justify-content: flex-start;">
+            🔍 Search Schemes by Keyword
+          </a>
+          <a href="/schemes.html?status=open" class="btn btn-secondary" style="justify-content: flex-start;">
+            ● View All Currently Open Schemes
+          </a>
+          <a href="/eligibility.html" class="btn btn-primary" style="justify-content: flex-start;">
+            🎯 Multi-Scheme Eligibility Wizard
+          </a>
+          <a href="/profile.html" class="btn btn-secondary" style="justify-content: flex-start;">
+            ⚙️ Update Demographic Details
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div>© 2026 Government Scheme Management and Recommendation System. DBMS Mini-Project.</div>
+      <div>Citizen Portal</div>
+    </div>
+  </footer>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/schemes.js"></script>
+</body>
+</html>

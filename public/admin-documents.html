@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Documents - Admin Console</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/admin.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <div class="brand-emblem" style="width: 36px; height: 36px; font-size: 1rem;">GS</div>
+        <div class="admin-sidebar-brand">
+          <h2>Admin Console</h2>
+          <span>DBMS Mini-Project</span>
+        </div>
+      </div>
+
+      <ul class="admin-nav">
+        <li class="admin-nav-item">
+          <a href="/admin-dashboard.html" class="admin-nav-link">
+            <span>📊</span> Dashboard
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-schemes.html" class="admin-nav-link">
+            <span>📜</span> All Schemes
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-scheme-form.html" class="admin-nav-link">
+            <span>➕</span> Add New Scheme
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-categories.html" class="admin-nav-link">
+            <span>🏛️</span> Manage Categories
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-audit-logs.html" class="admin-nav-link">
+            <span>🛡️</span> Scheme Audit Logs
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="admin-topbar-title">
+          <h1>Required Documents Manager</h1>
+        </div>
+        <div class="admin-user-info">
+          <a href="/admin-schemes.html" class="btn btn-secondary btn-sm">← Back to Schemes</a>
+        </div>
+      </header>
+
+      <div class="admin-body">
+        <div style="background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 1.5rem;">
+          <p class="text-muted" style="margin-bottom: 1.5rem;">
+            Document requirements are integrated directly into each scheme's editor form. To edit documents for any scheme, navigate to the scheme editor:
+          </p>
+          <a href="/admin-schemes.html" class="btn btn-primary">Go to Scheme Management Table →</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/admin.js"></script>
+</body>
+</html>

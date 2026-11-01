@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Registration - GovSchemes Portal</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="top-gov-strip">
+    <div><strong>🏛️ Civic Information &amp; Eligibility Portal</strong> (DBMS Mini-Project)</div>
+    <div class="disclaimer-badge">Educational Demonstration</div>
+  </div>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <div class="brand-emblem">GS</div>
+        <div class="brand-text">
+          <h1>GovSchemes Portal</h1>
+          <p>Citizen Registration</p>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <a href="/login.html" class="btn btn-secondary btn-sm">Already Registered? Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="auth-wrapper" style="max-width: 480px;">
+      <div class="auth-header">
+        <h2>Register as Citizen</h2>
+        <p>Create an account to save schemes and receive customized eligibility matching.</p>
+      </div>
+
+      <div id="register-error" class="alert alert-error" style="display: none;"></div>
+
+      <form id="form-register">
+        <div class="form-group">
+          <label for="full_name" class="form-label">Full Name</label>
+          <input
+            type="text"
+            id="full_name"
+            class="form-control"
+            placeholder="e.g. Rahul Sharma"
+            required
+            autocomplete="name"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            placeholder="e.g. rahul@example.com"
+            required
+            autocomplete="email"
+          >
+          <div class="form-hint">Used for sign in. We do not send promotional spam.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Minimum 6 characters"
+            required
+            minlength="6"
+            autocomplete="new-password"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="confirm_password" class="form-label">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm_password"
+            class="form-control"
+            placeholder="Re-enter password"
+            required
+            minlength="6"
+            autocomplete="new-password"
+          >
+        </div>
+
+        <div style="background-color: #f8fafc; border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-md); font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          🔒 <strong>Privacy Commitment:</strong> We do not collect Aadhaar numbers, PAN, or bank account credentials. Demographic information is solely used for academic eligibility simulation.
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          Create Citizen Account
+        </button>
+      </form>
+
+      <div style="margin-top: 1.5rem; text-align: center; font-size: 0.88rem; color: var(--text-muted);">
+        Already registered? <a href="/login.html" style="font-weight: 600;">Sign in here</a>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/auth.js"></script>
+</body>
+</html>

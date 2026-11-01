@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Sign In - GovSchemes Portal</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="top-gov-strip">
+    <div><strong>🏛️ Civic Information &amp; Eligibility Portal</strong> (DBMS Mini-Project)</div>
+    <div class="disclaimer-badge">Educational Demonstration</div>
+  </div>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-brand">
+        <div class="brand-emblem">GS</div>
+        <div class="brand-text">
+          <h1>GovSchemes Portal</h1>
+          <p>Citizen Sign In</p>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <a href="/index.html" class="btn btn-secondary btn-sm">← Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="auth-wrapper">
+      <div class="auth-header">
+        <h2>Citizen Sign In</h2>
+        <p>Access your profile, bookmarked schemes, and eligibility evaluations.</p>
+      </div>
+
+      <div id="login-error" class="alert alert-error" style="display: none;"></div>
+
+      <form id="form-login">
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            placeholder="e.g. rahul.sharma@example.com"
+            required
+            autocomplete="email"
+          >
+          <div class="form-hint">Demo: <code>rahul.sharma@example.com</code></div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Enter your password"
+            required
+            autocomplete="current-password"
+          >
+          <div class="form-hint">Demo Password: <code>Citizen@123</code></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+          Sign In
+        </button>
+      </form>
+
+      <div style="margin-top: 1.5rem; text-align: center; font-size: 0.88rem; color: var(--text-muted);">
+        Don't have an account? <a href="/register.html" style="font-weight: 600;">Register here</a>
+      </div>
+
+      <div style="margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.82rem;">
+        Are you an administrator? <a href="/admin-login.html" style="color: var(--accent-saffron); font-weight: 600;">Admin Portal Login →</a>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/auth.js"></script>
+</body>
+</html>

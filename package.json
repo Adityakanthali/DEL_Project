@@ -1,0 +1,33 @@
+{
+  "name": "government-scheme-management-system",
+  "version": "1.0.0",
+  "description": "Government Scheme Management and Eligibility Recommendation System - College DBMS Mini-Project",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node tests/run-tests.js",
+    "seed": "node src/scripts/seedDatabase.js"
+  },
+  "keywords": [
+    "dbms-project",
+    "government-schemes",
+    "mysql",
+    "express",
+    "eligibility-checker",
+    "normalization-3nf"
+  ],
+  "author": "Computer Engineering Student",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1",
+    "express-session": "^1.18.0",
+    "helmet": "^7.1.0",
+    "mysql2": "^3.10.1"
+  },
+  "devDependencies": {}
+}

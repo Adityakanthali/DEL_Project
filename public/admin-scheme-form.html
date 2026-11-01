@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheme Editor - Admin Console</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/admin.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <div class="brand-emblem" style="width: 36px; height: 36px; font-size: 1rem;">GS</div>
+        <div class="admin-sidebar-brand">
+          <h2>Admin Console</h2>
+          <span>DBMS Mini-Project</span>
+        </div>
+      </div>
+
+      <ul class="admin-nav">
+        <li class="admin-nav-item">
+          <a href="/admin-dashboard.html" class="admin-nav-link">
+            <span>📊</span> Dashboard
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-schemes.html" class="admin-nav-link">
+            <span>📜</span> All Schemes
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-scheme-form.html" class="admin-nav-link active">
+            <span>➕</span> Add New Scheme
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-categories.html" class="admin-nav-link">
+            <span>🏛️</span> Manage Categories
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-audit-logs.html" class="admin-nav-link">
+            <span>🛡️</span> Scheme Audit Logs
+          </a>
+        </li>
+        <li class="admin-nav-item" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+          <a href="/index.html" class="admin-nav-link" target="_blank">
+            <span>🌐</span> Public Portal ↗
+          </a>
+        </li>
+      </ul>
+
+      <div class="admin-sidebar-footer">
+        <span style="font-size: 0.8rem; color: #94a3b8;">MySQL 8.0 InnoDB</span>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="admin-topbar-title">
+          <h1 id="form-page-title">Add New Government Scheme</h1>
+        </div>
+        <div class="admin-user-info">
+          <a href="/admin-schemes.html" class="btn btn-secondary btn-sm">← Back to Schemes</a>
+        </div>
+      </header>
+
+      <div class="admin-body">
+        <form id="admin-scheme-form">
+          <!-- Section 1: Basic Metadata -->
+          <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.75rem; margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.15rem; color: var(--primary); margin-bottom: 1.25rem;">1. Scheme Information</h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+              <div class="form-group" style="grid-column: 1/-1;">
+                <label for="form-name" class="form-label">Scheme Official Name *</label>
+                <input type="text" id="form-name" class="form-control" placeholder="e.g. Pradhan Mantri Kisan Samman Nidhi" required>
+              </div>
+
+              <div class="form-group">
+                <label for="form-category" class="form-label">Category / Domain *</label>
+                <select id="form-category" class="form-control" required>
+                  <option value="">Loading categories...</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="form-pub-status" class="form-label">Publication Status *</label>
+                <select id="form-pub-status" class="form-control" required>
+                  <option value="draft">Draft (Hidden from public)</option>
+                  <option value="published">Published (Visible to citizens)</option>
+                  <option value="unpublished">Unpublished (Archived)</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="grid-column: 1/-1;">
+                <label for="form-short-desc" class="form-label">Short Summary (Excerpt) *</label>
+                <input type="text" id="form-short-desc" class="form-control" placeholder="Brief 1-2 sentence overview shown on cards" required>
+              </div>
+
+              <div class="form-group" style="grid-column: 1/-1;">
+                <label for="form-desc" class="form-label">Detailed Scheme Description</label>
+                <textarea id="form-desc" class="form-control" rows="4" placeholder="Comprehensive background, objectives, and operational guidelines"></textarea>
+              </div>
+
+              <div class="form-group" style="grid-column: 1/-1;">
+                <label for="form-benefits" class="form-label">Financial &amp; Welfare Benefits *</label>
+                <textarea id="form-benefits" class="form-control" rows="3" placeholder="Specific monetary subsidies, grants, or equipment aid provided" required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="form-start-date" class="form-label">Opening Date *</label>
+                <input type="date" id="form-start-date" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label for="form-end-date" class="form-label">Closing Date (Optional for ongoing)</label>
+                <input type="date" id="form-end-date" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="form-scope" class="form-label">Geographic Scope</label>
+                <select id="form-scope" class="form-control">
+                  <option value="National">National (Central Scheme)</option>
+                  <option value="State">State Specific</option>
+                  <option value="Regional">Regional</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="form-state" class="form-label">Applicable State (If state scope)</label>
+                <input type="text" id="form-state" class="form-control" placeholder="e.g. Maharashtra">
+              </div>
+
+              <div class="form-group">
+                <label for="form-app-url" class="form-label">Official Application Portal URL</label>
+                <input type="url" id="form-app-url" class="form-control" placeholder="https://pmkisan.gov.in">
+              </div>
+
+              <div class="form-group">
+                <label for="form-source-url" class="form-label">Official Source / Gazette URL</label>
+                <input type="url" id="form-source-url" class="form-control" placeholder="https://agricoop.nic.in">
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Dynamic Eligibility Criteria Builder -->
+          <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.75rem; margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <div>
+                <h3 style="font-size: 1.15rem; color: var(--primary);">2. Eligibility Conditions &amp; Rules</h3>
+                <p class="text-muted" style="font-size: 0.85rem;">Used by the recommendation engine. Saved atomically via MySQL transaction.</p>
+              </div>
+              <button type="button" id="btn-add-criterion" class="btn btn-secondary btn-sm">+ Add Condition</button>
+            </div>
+
+            <div id="criteria-dynamic-container">
+              <!-- Dynamically populated by admin.js -->
+            </div>
+          </div>
+
+          <!-- Section 3: Dynamic Required Documents Builder -->
+          <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.75rem; margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <div>
+                <h3 style="font-size: 1.15rem; color: var(--primary);">3. Required Supporting Documents</h3>
+                <p class="text-muted" style="font-size: 0.85rem;">Document checklist displayed to citizens on the details page.</p>
+              </div>
+              <button type="button" id="btn-add-document" class="btn btn-secondary btn-sm">+ Add Document</button>
+            </div>
+
+            <div id="documents-dynamic-container">
+              <!-- Dynamically populated by admin.js -->
+            </div>
+          </div>
+
+          <!-- Submit Buttons -->
+          <div style="text-align: right; margin-bottom: 3rem;">
+            <a href="/admin-schemes.html" class="btn btn-secondary" style="margin-right: 0.75rem;">Cancel</a>
+            <button type="submit" class="btn btn-primary btn-lg">Save Scheme Record</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/admin.js"></script>
+</body>
+</html>

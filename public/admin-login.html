@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal Login - GovSchemes Management</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body style="background-color: var(--primary-dark);">
+
+  <div class="top-gov-strip" style="background: rgba(0,0,0,0.2);">
+    <div><strong>🛡️ Government Scheme Administration Portal</strong></div>
+    <div class="disclaimer-badge">Restricted Administrative Access</div>
+  </div>
+
+  <main class="container" style="display: flex; align-items: center; justify-content: center; min-height: 80vh;">
+    <div class="auth-wrapper" style="width: 100%; max-width: 440px; margin: 0; border: 2px solid var(--accent-saffron);">
+      <div class="auth-header">
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🛡️</div>
+        <h2>Administrator Sign In</h2>
+        <p>Restricted to authorized scheme officers and system administrators.</p>
+      </div>
+
+      <div id="admin-login-error" class="alert alert-error" style="display: none;"></div>
+
+      <form id="form-admin-login">
+        <div class="form-group">
+          <label for="email" class="form-label">Administrator Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            placeholder="admin@govscheme.in"
+            required
+            autocomplete="email"
+          >
+          <div class="form-hint">Default Admin: <code>admin@govscheme.in</code></div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Enter password"
+            required
+            autocomplete="current-password"
+          >
+          <div class="form-hint">Default Password: <code>Admin@123</code></div>
+        </div>
+
+        <button type="submit" class="btn btn-accent btn-lg" style="width: 100%; margin-top: 0.5rem;">
+          Sign In to Admin Panel
+        </button>
+      </form>
+
+      <div style="margin-top: 1.5rem; text-align: center; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 1rem;">
+        Are you a citizen? <a href="/login.html" style="font-weight: 600;">Citizen Portal Login →</a>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/auth.js"></script>
+</body>
+</html>

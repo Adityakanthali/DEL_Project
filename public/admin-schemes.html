@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Schemes - Admin Console</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/admin.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <div class="brand-emblem" style="width: 36px; height: 36px; font-size: 1rem;">GS</div>
+        <div class="admin-sidebar-brand">
+          <h2>Admin Console</h2>
+          <span>DBMS Mini-Project</span>
+        </div>
+      </div>
+
+      <ul class="admin-nav">
+        <li class="admin-nav-item">
+          <a href="/admin-dashboard.html" class="admin-nav-link">
+            <span>📊</span> Dashboard
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-schemes.html" class="admin-nav-link active">
+            <span>📜</span> All Schemes
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-scheme-form.html" class="admin-nav-link">
+            <span>➕</span> Add New Scheme
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-categories.html" class="admin-nav-link">
+            <span>🏛️</span> Manage Categories
+          </a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="/admin-audit-logs.html" class="admin-nav-link">
+            <span>🛡️</span> Scheme Audit Logs
+          </a>
+        </li>
+        <li class="admin-nav-item" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+          <a href="/index.html" class="admin-nav-link" target="_blank">
+            <span>🌐</span> Public Portal ↗
+          </a>
+        </li>
+      </ul>
+
+      <div class="admin-sidebar-footer">
+        <span style="font-size: 0.8rem; color: #94a3b8;">MySQL 8.0 InnoDB</span>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="admin-topbar-title">
+          <h1>Government Schemes Database Management</h1>
+        </div>
+        <div class="admin-user-info">
+          <a href="/admin-scheme-form.html" class="btn btn-primary btn-sm">+ Add New Scheme</a>
+        </div>
+      </header>
+
+      <div class="admin-body">
+        <!-- Actions & Search Bar -->
+        <div class="admin-actions-bar">
+          <div class="admin-search-box">
+            <input
+              type="text"
+              id="admin-scheme-search"
+              class="form-control"
+              placeholder="Search scheme name or keywords..."
+            >
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+            <select id="admin-scheme-category-filter" class="form-control" style="width: auto;">
+              <option value="">All Categories</option>
+            </select>
+
+            <select id="admin-scheme-status-filter" class="form-control" style="width: auto;">
+              <option value="">All Publication Statuses</option>
+              <option value="published">Published</option>
+              <option value="draft">Draft</option>
+              <option value="unpublished">Unpublished</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Schemes Data Table -->
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 60px;">ID</th>
+                <th>Scheme Name</th>
+                <th>Category</th>
+                <th>Dates</th>
+                <th>Status</th>
+                <th style="width: 250px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-schemes-tbody">
+              <tr><td colspan="6" class="text-muted" style="text-align: center; padding: 2rem;">Loading scheme records from MySQL...</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="admin-schemes-pagination"></div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/admin.js"></script>
+</body>
+</html>
