@@ -151,7 +151,7 @@ Ensure MySQL Server (version 8.0 or 5.7) or XAMPP MySQL is running:
 - If using XAMPP: Open XAMPP Control Panel and start the **MySQL** service.
 
 ### Step 3: Install Node.js Dependencies
-In the project root folder (`c:\Users\Aditya\Documents\DEL_Project`), open terminal and run:
+In the project root folder (`path/to/DEL_Project/`), open terminal and run:
 ```powershell
 npm install
 ```
@@ -161,7 +161,7 @@ Check the `.env` file in the root directory. If your MySQL root user has a passw
 ```ini
 PORT=3000
 NODE_ENV=development
-SESSION_SECRET=gov_scheme_session_secret_key_change_in_production_2026_xyz
+SESSION_SECRET=replace_with_a_random_secret
 
 DB_HOST=localhost
 DB_PORT=3306
@@ -214,7 +214,12 @@ Checking connection to MySQL database "government_scheme_db"...
    👉 Admin Login:      http://localhost:3000/admin-login.html
    👉 Admin Dashboard:  http://localhost:3000/admin-dashboard.html
 ----------------------------------------------------------------------
-Default Demo Accounts:
+### Test-Only Demo Accounts
+
+The following credentials are for local academic
+demonstration only. Do not use them in production.
+
+
    Admin:   admin@govscheme.in       | Password: Admin@123
    Citizen: rahul.sharma@example.com | Password: Citizen@123
 ======================================================================
